@@ -426,6 +426,14 @@ int main() {
         cout << "Masukan fitur yang ingin digunakan: ";
         cin >> pilihan;
 
+        if (cin.fail() || pilihan < 1 || pilihan > 10) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "[ERROR] Masukan tidak valid! Masukkan angka antara 1-10.\n";
+            system("pause");
+            continue;
+        }
+
         switch (pilihan) {
             case 1: {
                 int kategori_produk, urutan_harga;
@@ -516,9 +524,9 @@ int main() {
                 break;
             }
             default: {
-                cout << "[ERROR] Nomor tidak valid, silahkan masukan nomor yang valid!\n";
-                system("pause");
-                continue;
+                cout << endl << "[ERROR] Nomor tidak valid, silahkan masukan nomor yang valid!\n";
+                    system("pause");
+                break;
             }
         }
     } while (pilihan != 10);
